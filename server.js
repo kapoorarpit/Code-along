@@ -8,7 +8,8 @@ const app= express();
 const server = http.createServer(app);
 const socketio = require('socket.io');
 const io = socketio(server);
-
+const formatmessage = require('./public/utils/messages')
+const name= 'CodeAlong';
 
 //set static folder
 app.use(express.static(path.join(__dirname,'public')));
@@ -16,19 +17,19 @@ app.use(express.static(path.join(__dirname,'public')));
 // run when client connects
 io.on('connection', socket=>{
 
-    socket.emit('message', 'welcome to codeAlong')
+    socket.emit('message',formatmessage(name,'welcome to codeAlong'))
 
     // broadcast 
     // connect
-    socket.broadcast.emit('message', 'A user has joined');
+    socket.broadcast.emit('message',formatmessage(name, 'A user has joined'));
     // disconnects 
     socket.on('disconnect', ()=>{
-        io.emit('message', 'A user has left');
+        io.emit('message',formatmessage(name,'A user has left'));
     });
 
     // listen for chat message
     socket.on('chatmessage', (msg)=>{
-        io.emit('message',msg);
+        io.emit('message',formatmessage('user',msg));
     });
 });
 
