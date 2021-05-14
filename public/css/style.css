@@ -41,8 +41,8 @@ a {
 /* Chat Page */
 
 .chat-container {
-	max-width: 1100px;
-	background: #fff;
+	max-width: 500px;
+	background: rgb(85, 76, 76);
 	margin: 30px auto;
 	overflow: hidden;
 }
@@ -128,7 +128,7 @@ a {
 
 /* Join Page */
 .join-container {
-	max-width: 500px;
+	max-width: 600px;
 	margin: 80px auto;
 	color: #fff;
 }
@@ -187,3 +187,14 @@ a {
 		display: none;
 	}
 }
+
+.float-container {
+    padding: 20px;
+}
+
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+
+}  
